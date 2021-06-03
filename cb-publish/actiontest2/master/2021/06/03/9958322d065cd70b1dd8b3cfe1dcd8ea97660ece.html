@@ -199,7 +199,7 @@
 				
 				<option value="file71">github.com/jmleefree/actiontest2/src/utils/config/config.go (0.0%)</option>
 				
-				<option value="file72">github.com/jmleefree/actiontest2/src/utils/lang/functions.go (60.0%)</option>
+				<option value="file72">github.com/jmleefree/actiontest2/src/utils/lang/functions.go (63.3%)</option>
 				
 				</select>
 			</div>
@@ -10190,7 +10190,7 @@ func GetUid() string <span class="cov8" title="1">{
 func GetRandomString(n int) string <span class="cov8" title="1">{
         b := make([]byte, n)
         for i, cache, remain := n-1, randSrc.Int63(), letterIdxMax; i &gt;= 0; </span><span class="cov8" title="1">{
-                if remain == 0 </span><span class="cov0" title="0">{
+                if remain == 0 </span><span class="cov8" title="1">{
                         cache, remain = randSrc.Int63(), letterIdxMax
                 }</span>
                 <span class="cov8" title="1">if idx := int(cache &amp; letterIdxMask); idx &lt; len(letterBytes) </span><span class="cov8" title="1">{
