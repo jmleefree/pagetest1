@@ -325,8 +325,8 @@
         async created() {
           let urlParams = new URLSearchParams(window.location.search);
           this.infoPath = urlParams.get('info');
-          this.coveragePath = this.infoPath.replace(".json", ".html");
           console.log('infoPath', this.infoPath);
+          this.coveragePath = this.infoPath.replace(".json", ".html");
           console.log('coveragePath', this.coveragePath);
           
           let result = await axios.get(this.infoPath);
