@@ -327,6 +327,7 @@
           this.infoPath = urlParams.get('info');
           console.log('infoPath', this.infoPath);
           
+          this.coveragePath = '';
           if(this.InfoPath != null) {
             this.coveragePath = this.infoPath.replace(".json", ".html");
             console.log('coveragePath', this.coveragePath);
