@@ -326,12 +326,15 @@
           let urlParams = new URLSearchParams(window.location.search);
           this.infoPath = urlParams.get('info');
           console.log('infoPath', this.infoPath);
-          this.coveragePath = this.infoPath.replace(".json", ".html");
-          console.log('coveragePath', this.coveragePath);
           
-          let result = await axios.get(this.infoPath);
-          this.report = result.data;
-          console.log('report', this.report);
+          if(this.InfoPath == null) {
+            this.coveragePath = this.infoPath.replace(".json", ".html");
+            console.log('coveragePath', this.coveragePath);
+
+            let result = await axios.get(this.infoPath);
+            this.report = result.data;
+            console.log('report', this.report);
+          }
         }      
       });
       
