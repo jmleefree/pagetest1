@@ -109,7 +109,107 @@
 
           </div>
           
+          <div class="row" style="margin-top:5px;">
+            
+              <div class="col-lg-3">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                      <div class="card-body" style="">
+                          <div class="row">
+                              <div class="col">
+                                  <h2 class="card-title text-muted mb-0"><strong>Test</strong><small class="ml-2 mb-0 text-muted">/ unit</small></h2>
+                                  <span class="h1 font-weight-bold mb-0 text-info" v-if="report.test.unit.run == 0" >Skip</span>
+                                  <span class="h1 font-weight-bold mb-0" v-bind:class="{ 'text-danger': report.test.unit.run == 1 && report.test.unit.failCnt > 0, 'text-success': report.test.unit.run == 1 && report.test.unit.failCnt == 0 }">{{ report.test.unit.failCnt }} failure</span>
+                              </div>
+                          </div>
+                          <p class="mt-3 mb-0 text-muted text-sm-right">
+                            <span class="text-success mr-2" >{{ report.test.unit.allCnt }} cases</span>
+                            <span class="text-sm"><a href="#details" @click="tabIndex=4">details</a></span>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+            
+              <div class="col-lg-3">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                      <div class="card-body" style="">
+                          <div class="row">
+                              <div class="col">
+                                  <h2 class="card-title text-muted mb-0"><strong>Test</strong><small class="ml-2 mb-0 text-muted">/ coverage</small></h2>
+                                  <span class="h1 font-weight-bold mb-0 text-info" v-if="report.test.coverage.run == 0" >Skip</span>
+                                  <span class="h1 font-weight-bold mb-0 text-danger" v-if="report.test.coverage.run == 1 && report.test.coverage.check > 0" >Error</span>
+                                  <span class="h1 font-weight-bold mb-0 text-success" v-if="report.test.coverage.run == 1 && report.test.coverage.check == 0" >{{ report.test.coverage.total }}</span>
+                              </div>
+                          </div>
+                          <p class="mt-3 mb-0 text-muted text-sm-right">
+                            <span class="text-success mr-2" ></span>
+                            <span class="text-sm"><a :href="coveragePath" target="_blank">details</a></span>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+            
+              <div class="col-lg-3">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                      <div class="card-body" style="">
+                          <div class="row">
+                              <div class="col">
+                                  <h2 class="card-title text-muted mb-0"><strong>Test</strong><small class="ml-2 mb-0 text-muted">/ go build</small></h2>
+                                  <span class="h1 font-weight-bold mb-0 text-info" v-if="report.gobuild.run == 0" >Skip</span>
+                                  <span class="h1 font-weight-bold mb-0 text-danger" v-if="report.gobuild.run == 1 && report.gobuild.check > 0" >Error</span>
+                                  <span class="h1 font-weight-bold mb-0 text-success" v-if="report.gobuild.run == 1 && report.gobuild.check == 0" >Success</span>
+                              </div>
+                          </div>
+                          <p class="mt-3 mb-0 text-muted text-sm-right">
+                            <span class="text-success mr-2" ></span>
+                            <span class="text-sm"><a href="#details" @click="tabIndex=5">details</a></span>
+                          </p>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
           
+          <div class="row" style="margin-top:5px;">
+            
+              <div class="col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                      <div class="card-body" style="">
+                          <div class="row">
+                              <div class="col">
+                                  <h2 class="card-title text-muted mb-0"><strong>Deploy</strong><small class="ml-2 mb-0 text-muted">/ docker build</small></h2>
+                                  <span class="h1 font-weight-bold mb-0 text-info" v-if="report.deploy.dockerBuild.run == 0" >Skip</span>
+                                  <span class="h1 font-weight-bold mb-0 text-danger" v-if="report.deploy.dockerBuild.run == 1 && report.deploy.dockerBuild.check == 1" >Error</span>
+                                  <span class="h1 font-weight-bold mb-0 text-success" v-if="report.deploy.dockerBuild.run == 1 && report.deploy.dockerBuild.check == 0" >Success</span>
+                              </div>
+                          </div>
+                          <p class="mt-3 mb-0 text-muted text-sm-right">
+                            <span class="text-success mr-2" ></span>
+                            <span class="text-sm"><a href="#details" @click="tabIndex=6">details</a></span>
+                          </p>
+                      </div>
+                  </div>
+              </div>  
+            
+              <div class="col-lg-6">
+                  <div class="card card-stats mb-4 mb-xl-0">
+                      <div class="card-body" style="">
+                          <div class="row">
+                              <div class="col">
+                                  <h2 class="card-title text-muted mb-0"><strong>Deploy</strong><small class="ml-2 mb-0 text-muted">/ publish image</small></h2>
+                                  <span class="h1 font-weight-bold mb-0 text-info" v-if="report.deploy.publish.run == 0" >Skip</span>
+                                  <span class="h1 font-weight-bold mb-0 text-danger" v-if="report.deploy.publish.run == 1 && report.deploy.publish.check == 1" >Error</span>
+                                  <span class="h1 font-weight-bold mb-0 text-success" v-if="report.deploy.publish.run == 1 && report.deploy.publish.check == 0" >Success</span>
+                              </div>
+                          </div>
+                          <p class="mt-3 mb-0 text-muted text-sm-right">
+                            <span class="text-success mr-2" ></span>
+                            <span class="text-sm"><a href="#details" @click="tabIndex=7">details</a></span>
+                          </p>
+                      </div>
+                  </div>
+              </div> 
+
+          </div>
           
           <h2 style="margin-top:20px;"> Details </h2>
           <hr>
