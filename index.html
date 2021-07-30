@@ -42,7 +42,7 @@
                               <div class="col">
                                   <h2 class="card-title text-muted mb-0"><strong>Lint</strong><small class="ml-2 mb-0 text-muted">/ deadcode</small></h2>
                                   <span class="h1 font-weight-bold mb-0 text-info" v-if="report.lint.deadcode.run == 0" >Skip</span>
-                                  <span class="h1 font-weight-bold mb-0" v-bind:class="{ 'text-warning': report.lint.deadcode.run == 1 && report.lint.deadcode.cnt > 0, 'text-success': report.lint.deadcode.run == 1 && report.lint.deadcode.cnt == 0 }">{{ report.lint.deadcode.cnt }} found</span>
+                                  <span class="h1 font-weight-bold mb-0" v-if="report.lint.deadcode.run == 1" v-bind:class="{ 'text-warning': report.lint.deadcode.cnt > 0, 'text-success': report.lint.deadcode.cnt == 0 }">{{ report.lint.deadcode.cnt }} found</span>
                               </div>
                           </div>
                           <p class="mt-3 mb-0 text-muted text-sm-right">
@@ -60,7 +60,7 @@
                               <div class="col">
                                   <h2 class="card-title text-muted mb-0"><strong>Lint</strong><small class="ml-2 mb-0 text-muted">/ errcheck</small></h2>
                                   <span class="h1 font-weight-bold mb-0 text-info" v-if="report.lint.errcheck.run == 0" >Skip</span>
-                                  <span class="h1 font-weight-bold mb-0" v-bind:class="{ 'text-warning': report.lint.errcheck.run == 1 && report.lint.errcheck.cnt > 0, 'text-success': report.lint.errcheck.run == 1 && report.lint.errcheck.cnt == 0 }">{{ report.lint.errcheck.cnt }} found</span>
+                                  <span class="h1 font-weight-bold mb-0" v-if="report.lint.errcheck.run == 1" v-bind:class="{ 'text-warning': report.lint.errcheck.cnt > 0, 'text-success': report.lint.errcheck.cnt == 0 }">{{ report.lint.errcheck.cnt }} found</span>
                               </div>
                           </div>
                           <p class="mt-3 mb-0 text-muted text-sm-right">
@@ -78,7 +78,7 @@
                               <div class="col">
                                   <h2 class="card-title text-muted mb-0"><strong>Lint</strong><small class="ml-2 mb-0 text-muted">/ staticcheck</small></h2>
                                   <span class="h1 font-weight-bold mb-0 text-info" v-if="report.lint.staticcheck.run == 0" >Skip</span>
-                                  <span class="h1 font-weight-bold mb-0" v-bind:class="{ 'text-warning': report.lint.staticcheck.run == 1 && report.lint.staticcheck.cnt > 0, 'text-success': report.lint.staticcheck.run == 1 && report.lint.staticcheck.cnt == 0 }">{{ report.lint.staticcheck.cnt }} found</span>
+                                  <span class="h1 font-weight-bold mb-0" v-if="report.lint.staticcheck.run == 1" v-bind:class="{ 'text-warning': report.lint.staticcheck.cnt > 0, 'text-success': report.lint.staticcheck.cnt == 0 }">{{ report.lint.staticcheck.cnt }} found</span>
                               </div>
                           </div>
                           <p class="mt-3 mb-0 text-muted text-sm-right">
@@ -96,7 +96,7 @@
                               <div class="col">
                                   <h2 class="card-title text-muted mb-0"><strong>Lint</strong><small class="ml-2 mb-0 text-muted">/ revive</small></h2>
                                   <span class="h1 font-weight-bold mb-0 text-info" v-if="report.lint.revive.run == 0" >Skip</span>
-                                  <span class="h1 font-weight-bold mb-0" v-bind:class="{ 'text-warning': report.lint.revive.run == 1 && report.lint.revive.cnt > 0, 'text-success': report.lint.revive.run == 1 && report.lint.revive.cnt == 0 }">{{ report.lint.revive.cnt }} found</span>
+                                  <span class="h1 font-weight-bold mb-0" v-if="report.lint.revive.run == 1" v-bind:class="{ 'text-warning': report.lint.revive.cnt > 0, 'text-success': report.lint.revive.cnt == 0 }">{{ report.lint.revive.cnt }} found</span>
                               </div>
                           </div>
                           <p class="mt-3 mb-0 text-muted text-sm-right">
@@ -118,7 +118,7 @@
                               <div class="col">
                                   <h2 class="card-title text-muted mb-0"><strong>Test</strong><small class="ml-2 mb-0 text-muted">/ unit</small></h2>
                                   <span class="h1 font-weight-bold mb-0 text-info" v-if="report.test.unit.run == 0" >Skip</span>
-                                  <span class="h1 font-weight-bold mb-0" v-bind:class="{ 'text-danger': report.test.unit.run == 1 && report.test.unit.failCnt > 0, 'text-success': report.test.unit.run == 1 && report.test.unit.failCnt == 0 }">{{ report.test.unit.failCnt }} failure</span>
+                                  <span class="h1 font-weight-bold mb-0" v-if="report.test.unit.run == 1" v-bind:class="{ 'text-danger': report.test.unit.failCnt > 0, 'text-success': report.test.unit.failCnt == 0 }">{{ report.test.unit.failCnt }} failure</span>
                               </div>
                           </div>
                           <p class="mt-3 mb-0 text-muted text-sm-right">
@@ -142,7 +142,7 @@
                           </div>
                           <p class="mt-3 mb-0 text-muted text-sm-right">
                             <span class="text-success mr-2" ></span>
-                            <span class="text-sm"><a :href="coveragePath" target="_blank">details</a></span>
+                            <span class="text-sm"><a v-if="report.test.coverage.run == 1" :href="coveragePath" target="_blank">details</a></span>
                           </p>
                       </div>
                   </div>
